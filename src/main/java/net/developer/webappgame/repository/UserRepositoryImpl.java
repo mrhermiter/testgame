@@ -19,7 +19,6 @@ public class UserRepositoryImpl implements UserRepository {
     private final static String SAVE_USER_SQL = "INSERT INTO users (login, password, rating, damage, health) VALUES (?, ?, ?, ?, ?)";
     private final static String LOAD_USER_SQL = "SELECT * FROM users WHERE login=?";
 
-
     DataSource dataSource;
 
     {

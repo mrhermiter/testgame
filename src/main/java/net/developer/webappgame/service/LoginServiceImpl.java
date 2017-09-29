@@ -16,18 +16,13 @@ public class LoginServiceImpl implements LoginService {
             user = fillNewUser(user);
             userRepository.save(user);
 
-            System.out.println("add new " + user);
             return user;
         }
 
         if (user.getPassword().equals(searchUser.getPassword())) {
 
-            System.out.println("Login " + user);
-
             return searchUser;
         }
-
-        System.out.println("Bad pass ");
 
         return null;
     }

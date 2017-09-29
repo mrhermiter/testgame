@@ -11,8 +11,7 @@ public abstract class PreparedStatementBuilder {
         this.sql = sql;
     }
 
-    protected void preparePrepared(PreparedStatement preparedStatement) throws SQLException {
-    }
+    protected abstract void preparePrepared(PreparedStatement preparedStatement) throws SQLException;
 
     public PreparedStatement build(Connection connection) throws SQLException {
 

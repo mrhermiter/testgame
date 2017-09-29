@@ -6,7 +6,7 @@
    </head>
    <body>
       <h3>Login please</h3>
-
+      <div>${message}</div>
       <form method="POST" action="${pageContext.request.contextPath}/login">
 
        <label>User Name

@@ -13,7 +13,7 @@
 
     <filter>
         <filter-name>authFilter</filter-name>
-        <filter-class>webappgame.filter.AuthFilter</filter-class>
+        <filter-class>net.developer.webappgame.filter.AuthFilter</filter-class>
         <init-param>
             <param-name>active</param-name>
             <param-value>true</param-value>

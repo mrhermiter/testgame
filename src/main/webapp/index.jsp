@@ -6,6 +6,6 @@
    </head>
    <body>
       <h3>Home</h3>
-
+      <a href="${pageContext.request.contextPath}/logout">Exit</a>
    </body>
 </html>

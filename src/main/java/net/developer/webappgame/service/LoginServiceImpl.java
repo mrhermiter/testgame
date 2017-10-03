@@ -14,7 +14,7 @@ public class LoginServiceImpl implements LoginService {
         User searchUser = userRepository.loadByLogin(user.getLogin());
         if (searchUser == null) {
             user = fillNewUser(user);
-            userRepository.save(user);
+            userRepository.create(user);
 
             return user;
         }

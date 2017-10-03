@@ -11,13 +11,13 @@ public abstract class PreparedStatementBuilder {
         this.sql = sql;
     }
 
-    protected abstract void preparePrepared(PreparedStatement preparedStatement) throws SQLException;
+    protected abstract void fillStatement(PreparedStatement preparedStatement) throws SQLException;
 
     public PreparedStatement build(Connection connection) throws SQLException {
 
-        PreparedStatement returnable = connection.prepareStatement(sql);
-        preparePrepared(returnable);
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        fillStatement(preparedStatement);
 
-        return returnable;
+        return preparedStatement;
     }
 }

@@ -21,14 +21,14 @@ public class AuthFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
 
-        if (filterConfig.getInitParameter("active").equalsIgnoreCase("true")) {
+        if ("true".equalsIgnoreCase(filterConfig.getInitParameter("active"))) {
             HttpServletRequest request = (HttpServletRequest) servletRequest;
             HttpServletResponse response=(HttpServletResponse)servletResponse;
             HttpSession httpSession=request.getSession(true);
             String servletPath = request.getServletPath();
             String login=(String) httpSession.getAttribute("login");
 
-            if(login==null && !servletPath.equals("/login")){
+            if(login==null && !"/login".equals(servletPath)){
                 response.sendRedirect("/login");
                 return;
             }

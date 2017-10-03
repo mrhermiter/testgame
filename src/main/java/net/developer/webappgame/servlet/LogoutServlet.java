@@ -15,5 +15,4 @@ public class LogoutServlet extends HttpServlet {
         httpServletRequest.getSession().invalidate();
         httpServletResponse.sendRedirect("");
     }
-
 }

@@ -50,7 +50,7 @@ public class LoginServlet extends HttpServlet {
 
         httpSession = httpServletRequest.getSession(false);
         httpSession.setAttribute("login", user.getLogin());
-
+        httpSession.setAttribute("user", user);
         httpServletResponse.sendRedirect("");
     }
 }

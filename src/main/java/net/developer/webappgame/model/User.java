@@ -9,16 +9,23 @@ public class User {
     private int rating;
     private int damage;
     private int health;
+    private int fightHealth;
+    private int state;
+    private int fightId;
 
-    public User(){}
+    public User() {
+    }
 
-    public User(int id, String login, String password, int rating, int damage, int health) {
+    public User(int id, String login, String password, int rating, int damage, int health, int fightHealth, int state, int fightId) {
         this.id = id;
         this.login = login;
         this.password = password;
         this.rating = rating;
         this.damage = damage;
         this.health = health;
+        this.fightHealth = fightHealth;
+        this.state = state;
+        this.fightId = fightId;
     }
 
     public int getId() {
@@ -69,15 +76,27 @@ public class User {
         this.health = health;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", login='" + login + '\'' +
-                ", password='" + password + '\'' +
-                ", rating=" + rating +
-                ", damage=" + damage +
-                ", health=" + health +
-                '}';
+    public int getFightHealth() {
+        return fightHealth;
+    }
+
+    public void setFightHealth(int fightHealth) {
+        this.fightHealth = fightHealth;
+    }
+
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
+    }
+
+    public int getFightId() {
+        return fightId;
+    }
+
+    public void setFightId(int fightId) {
+        this.fightId = fightId;
     }
 }

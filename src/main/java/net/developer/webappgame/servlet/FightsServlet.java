@@ -1,7 +1,7 @@
 package net.developer.webappgame.servlet;
 
+
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,12 +9,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("")
-public class HomeServlet extends HttpServlet {
+@WebServlet("/fights")
+public class FightsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ServletException, IOException {
+        RequestDispatcher dispatcher;
 
-        RequestDispatcher dispatcher = httpServletRequest.getRequestDispatcher("/index.jsp");
+        dispatcher = httpServletRequest.getRequestDispatcher("/fights.jsp");
         dispatcher.forward(httpServletRequest, httpServletResponse);
     }
 

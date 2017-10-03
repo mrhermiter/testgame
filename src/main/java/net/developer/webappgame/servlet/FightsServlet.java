@@ -1,6 +1,9 @@
 package net.developer.webappgame.servlet;
 
 
+import net.developer.webappgame.service.WatchService;
+import net.developer.webappgame.service.WatchServiceImpl;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,11 +14,15 @@ import java.io.IOException;
 
 @WebServlet("/fights")
 public class FightsServlet extends HttpServlet {
+
+    private WatchService watchService=new WatchServiceImpl();
+
     @Override
     protected void doGet(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ServletException, IOException {
-        RequestDispatcher dispatcher;
+        watchService.startWatching();
 
-        dispatcher = httpServletRequest.getRequestDispatcher("/fights.jsp");
+        RequestDispatcher dispatcher = httpServletRequest.getRequestDispatcher("/fights.jsp");
+        httpServletRequest.setAttribute("page",watchService.endWatching());
         dispatcher.forward(httpServletRequest, httpServletResponse);
     }
 

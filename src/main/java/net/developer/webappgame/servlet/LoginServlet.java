@@ -3,6 +3,8 @@ package net.developer.webappgame.servlet;
 import net.developer.webappgame.model.User;
 import net.developer.webappgame.service.LoginService;
 import net.developer.webappgame.service.LoginServiceImpl;
+import net.developer.webappgame.service.WatchService;
+import net.developer.webappgame.service.WatchServiceImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,17 +19,21 @@ import java.io.IOException;
 public class LoginServlet extends HttpServlet {
 
     private LoginService loginService = new LoginServiceImpl();
+    private WatchService watchService=new WatchServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ServletException, IOException {
-
+        watchService.startWatching();
         RequestDispatcher dispatcher = httpServletRequest.getRequestDispatcher("/login.jsp");
+        httpServletRequest.setAttribute("page",watchService.endWatching());
         dispatcher.forward(httpServletRequest, httpServletResponse);
 
     }
 
     @Override
     protected void doPost(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ServletException, IOException {
+
+        watchService.startWatching();
 
         User user = new User();
         HttpSession httpSession;
@@ -43,6 +49,7 @@ public class LoginServlet extends HttpServlet {
             message = "Bad login/password";
             httpServletRequest.setAttribute("message", message);
             RequestDispatcher dispatcher = httpServletRequest.getRequestDispatcher("/login.jsp");
+            httpServletRequest.setAttribute("page",watchService.endWatching());
             dispatcher.forward(httpServletRequest, httpServletResponse);
 
             return;

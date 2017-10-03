@@ -20,5 +20,6 @@
        <input type="submit" value= "Submit" />
 
       </form>
+      <div>${pageContext.request.getAttribute("page")}</div>
    </body>
 </html>

@@ -1,6 +1,5 @@
 package net.developer.webappgame.repository;
 
-import net.developer.webappgame.model.Fight;
 import net.developer.webappgame.model.User;
 
 

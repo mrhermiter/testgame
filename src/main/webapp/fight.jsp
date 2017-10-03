@@ -90,5 +90,6 @@
                                     },1000);
         </script>
     <%}}%>
+    <div>${pageContext.request.getAttribute("page")}</div>
    </body>
 </html>

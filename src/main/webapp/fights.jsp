@@ -19,5 +19,6 @@
         <input type="submit" value="Start Fight" />
       </form>
       </div>
+      <div>${pageContext.request.getAttribute("page")}</div>
    </body>
 </html>

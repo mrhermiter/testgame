@@ -58,6 +58,7 @@ public class FightRepositoryImpl extends ConnectionUtil implements FightReposito
         try {
             resultSet = execute(preparedStatementBuilder);
             if (!resultSet.isBeforeFirst()) {
+                connectionClose();
                 return fight;
             }
             resultSet.next();

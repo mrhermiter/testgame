@@ -2,9 +2,7 @@ package net.developer.webappgame.servlet;
 
 
 import net.developer.webappgame.model.User;
-import net.developer.webappgame.service.FightInitService;
-import net.developer.webappgame.service.FightInitServiceImpl;
-import net.developer.webappgame.service.FightService;
+import net.developer.webappgame.service.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,10 +16,14 @@ import java.util.List;
 
 @WebServlet("/fight")
 public class FightServlet extends HttpServlet {
+
     private FightInitService fightInitService = new FightInitServiceImpl();
+    private WatchService watchService=new WatchServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ServletException, IOException {
+        watchService.startWatching();
+
         RequestDispatcher dispatcher;
         FightService fightService;
         HttpSession httpSession = httpServletRequest.getSession();
@@ -36,11 +38,14 @@ public class FightServlet extends HttpServlet {
         }
 
         dispatcher = httpServletRequest.getRequestDispatcher("/fight.jsp");
+        httpServletRequest.setAttribute("page",watchService.endWatching());
         dispatcher.forward(httpServletRequest, httpServletResponse);
     }
 
     @Override
     protected void doPost(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ServletException, IOException {
+        watchService.startWatching();
+
         HttpSession httpSession = httpServletRequest.getSession();
         FightService fightService = (FightService) httpSession.getAttribute("fight");
 
@@ -59,6 +64,7 @@ public class FightServlet extends HttpServlet {
         }
 
         RequestDispatcher dispatcher = httpServletRequest.getRequestDispatcher("/fight.jsp");
+        httpServletRequest.setAttribute("page",watchService.endWatching());
         dispatcher.forward(httpServletRequest, httpServletResponse);
     }
 }

@@ -1,7 +1,6 @@
 package net.developer.webappgame.repository;
 
 import net.developer.webappgame.builder.PreparedStatementBuilder;
-import net.developer.webappgame.model.Fight;
 import net.developer.webappgame.model.User;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -78,6 +77,7 @@ public class UserRepositoryImpl extends ConnectionUtil implements UserRepository
         try {
             resultSet = execute(preparedStatementBuilder);
             if (!resultSet.isBeforeFirst()) {
+                connectionClose();
                 return user;
             }
             resultSet.next();
@@ -117,6 +117,7 @@ public class UserRepositoryImpl extends ConnectionUtil implements UserRepository
         try {
             resultSet = execute(preparedStatementBuilder);
             if (!resultSet.isBeforeFirst()) {
+                connectionClose();
                 return null;
             }
             resultSet.next();
@@ -157,6 +158,7 @@ public class UserRepositoryImpl extends ConnectionUtil implements UserRepository
         try {
             resultSet = execute(preparedStatementBuilder);
             if (!resultSet.isBeforeFirst()) {
+                connectionClose();
                 return null;
             }
             resultSet.next();

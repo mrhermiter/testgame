@@ -2,7 +2,6 @@ package net.developer.webappgame.repository;
 
 
 import net.developer.webappgame.builder.PreparedStatementBuilder;
-import net.developer.webappgame.model.Fight;
 import net.developer.webappgame.model.FightProgress;
 
 import java.sql.PreparedStatement;
@@ -48,6 +47,7 @@ public class FightProgressRepositoryImpl extends ConnectionUtil implements Fight
         try {
             resultSet = execute(preparedStatementBuilder);
             if (!resultSet.isBeforeFirst()) {
+                connectionClose();
                 return progresses;
             }
             while (resultSet.next()) {

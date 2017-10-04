@@ -1,6 +1,8 @@
 package net.developer.webappgame.model;
 
-
+/**
+ * User model
+ */
 public class User {
 
     private int id;

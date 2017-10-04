@@ -1,6 +1,8 @@
 package net.developer.webappgame.model;
 
-
+/**
+ * Fight progress model
+ */
 public class FightProgress {
     private int id;
     private int fightId;

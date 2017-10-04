@@ -15,12 +15,23 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+/**
+ * Login servlet
+ */
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 
     private LoginService loginService = new LoginServiceImpl();
     private WatchService watchService=new WatchServiceImpl();
 
+
+    /**
+     * Generates view-page login
+     * @param httpServletRequest
+     * @param httpServletResponse
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doGet(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ServletException, IOException {
         watchService.startWatching();
@@ -30,6 +41,13 @@ public class LoginServlet extends HttpServlet {
 
     }
 
+    /**
+     * Generates view-page or redirect based on result authentication
+     * @param httpServletRequest
+     * @param httpServletResponse
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doPost(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ServletException, IOException {
 
@@ -37,6 +55,7 @@ public class LoginServlet extends HttpServlet {
 
         User user = new User();
         HttpSession httpSession;
+
         String login = httpServletRequest.getParameter("login");
         String password = httpServletRequest.getParameter("password");
         String message = "";

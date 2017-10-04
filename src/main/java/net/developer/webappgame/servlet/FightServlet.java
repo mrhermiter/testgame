@@ -14,12 +14,23 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
+
+/**
+ * Fight servlet
+ */
 @WebServlet("/fight")
 public class FightServlet extends HttpServlet {
 
     private FightInitService fightInitService = new FightInitServiceImpl();
     private WatchService watchService=new WatchServiceImpl();
 
+    /**
+     * Generates view-page based on result of creating fight
+     * @param httpServletRequest
+     * @param httpServletResponse
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doGet(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ServletException, IOException {
         watchService.startWatching();
@@ -42,6 +53,13 @@ public class FightServlet extends HttpServlet {
         dispatcher.forward(httpServletRequest, httpServletResponse);
     }
 
+    /**
+     * Generates view-page based on result of fight
+     * @param httpServletRequest
+     * @param httpServletResponse
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doPost(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ServletException, IOException {
         watchService.startWatching();

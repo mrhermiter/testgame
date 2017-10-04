@@ -1,6 +1,8 @@
 package net.developer.webappgame.model;
 
-
+/**
+ * Fight model
+ */
 public class Fight {
     private int id;
     private int state;

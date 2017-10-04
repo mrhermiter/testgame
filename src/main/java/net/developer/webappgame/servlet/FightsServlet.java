@@ -12,11 +12,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * Fights servlet
+ */
 @WebServlet("/fights")
 public class FightsServlet extends HttpServlet {
 
     private WatchService watchService=new WatchServiceImpl();
 
+    /**
+     * Generates view-page fights
+     * @param httpServletRequest
+     * @param httpServletResponse
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doGet(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ServletException, IOException {
         watchService.startWatching();
@@ -26,8 +36,4 @@ public class FightsServlet extends HttpServlet {
         dispatcher.forward(httpServletRequest, httpServletResponse);
     }
 
-    @Override
-    protected void doPost(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ServletException, IOException {
-        super.doPost(httpServletRequest, httpServletResponse);
-    }
 }

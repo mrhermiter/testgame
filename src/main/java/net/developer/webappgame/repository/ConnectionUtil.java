@@ -11,12 +11,18 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * Connection and request to db manager
+ */
 public class ConnectionUtil {
     Connection connection;
     DataSource dataSource;
 
+    /**
+     * Connection pool generate
+     */
     {
-        InitialContext initContext = null;
+        InitialContext initContext;
         try {
             initContext = new InitialContext();
             dataSource = (DataSource) initContext.lookup("java:comp/env/jdbc/testDB");
@@ -25,6 +31,11 @@ public class ConnectionUtil {
         }
     }
 
+    /**
+     * Execute request
+     * @param preparedStatementBuilder building statement
+     * @return request result set
+     */
     protected ResultSet execute(PreparedStatementBuilder preparedStatementBuilder) {
 
 
@@ -40,10 +51,15 @@ public class ConnectionUtil {
         return resultSet;
     }
 
+    /**
+     * Execute update request
+     * @param preparedStatementBuilder building statement
+     * @return generated key
+     */
     protected long executeUpdate(PreparedStatementBuilder preparedStatementBuilder) {
 
 
-        PreparedStatement preparedStatement = null;
+        PreparedStatement preparedStatement;
         long result = 0;
 
 
@@ -64,6 +80,9 @@ public class ConnectionUtil {
         return result;
     }
 
+    /**
+     * Close connection
+     */
     protected void connectionClose() {
         if (connection != null) {
             try {
